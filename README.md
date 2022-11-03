@@ -50,9 +50,7 @@ AI语音本地生成并发送的yunzai插件
     > https://wwp.lanzoub.com/ioagG0a3xufc
     > 密码:atri
 
-    这里借一张网图说明一下图中的√**一定要勾上**
-
-    ![image](./readme_/1.png)
+    Add python 3.7 to PATH的√**一定要勾上**
 
     > 如果是云服务器请需要再安装一个部件https://aka.ms/vs/16/release/vc_redist.x64.exe
 
