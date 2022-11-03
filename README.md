@@ -43,6 +43,7 @@ AI语音本地生成并发送的yunzai插件
 
 #### 其他
 [gitee地址](https://gitee.com/sumght/vits_yunzai_plugin/tree/master)
+预计下次更新会加入崩坏三人物语音生成，新的模型正在加紧炼制。
 
 # 安装查询（上述安装过程差啥东西，自行在这儿查询，比如你发现你python版本不对又不会安装，那么就来这儿查看）
 #### python环境
