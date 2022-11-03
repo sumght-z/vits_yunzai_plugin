@@ -33,9 +33,5 @@ AI语音本地生成并发送的yunzai插件
     `python setup.py build_ext --inplace`
     等待生成核心即可
 
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+#### 其他
+[gitee地址](https://gitee.com/sumght/vits_yunzai_plugin/tree/master)
