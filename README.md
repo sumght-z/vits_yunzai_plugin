@@ -36,8 +36,8 @@ AI语音本地生成并发送的yunzai插件
 #### 其他
 [gitee地址](https://gitee.com/sumght/vits_yunzai_plugin/tree/master)
 
-#### 安装查询（上述安装过程差啥东西，自行在这儿查询，比如你发现你python版本不对又不会安装，那么就来这儿查看）
-# python环境
+# 安装查询（上述安装过程差啥东西，自行在这儿查询，比如你发现你python版本不对又不会安装，那么就来这儿查看）
+#### python环境
 
 * 1.安装
 
@@ -78,7 +78,7 @@ AI语音本地生成并发送的yunzai插件
   python -m pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple/
   ```
 
-# ffmpeg配置
+#### ffmpeg配置
 
 * Windows用户[点我下载ffmpeg](https://wwp.lanzoub.com/ifhhC091vp3a)解压之后放在一个之后不会移动的目录下(**路径中无中文无空格**)
 
