@@ -21,7 +21,7 @@ AI语音本地生成并发送的yunzai插件
     `https://pan.baidu.com/s/1Q4ujpNn56ZI_Caort5aIeg?pwd=rr4j`
 3.  文件夹cd至本插件目录文件夹下 /vits，执行
     ```
-    pip install -r requirements.txt
+    pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
     ```
     安装环境
 
