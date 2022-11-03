@@ -13,12 +13,16 @@ AI语音本地生成并发送的yunzai插件
 #### 安装教程
 
 1.  yunzai根目录下输入
-   `git clone https://github.com/sumght-z/vits_yunzai_plugin.git ./plugins/vits-yunzai-Plugin/`
+    ```
+    git clone https://github.com/sumght-z/vits_yunzai_plugin.git ./plugins/vits-yunzai-Plugin/
+    ```
 2.  将ys.pth权重文件放入本目录文件夹下vits/ys/目录下
     下载地址:
     `https://pan.baidu.com/s/1Q4ujpNn56ZI_Caort5aIeg?pwd=rr4j`
 3.  文件夹cd至本插件目录文件夹下 /vits，执行
-    `pip install -r requirements.txt`
+    ```
+    pip install -r requirements.txt
+    ```
     安装环境
 
 #### 使用说明
@@ -29,8 +33,12 @@ AI语音本地生成并发送的yunzai插件
 #### 常见问题
 1.  ModuleNotFoundError: No module named 'monotonic_align.monotonic_align.core'
     解决方法：在vits的目录下，
-    `cd monotonic_align`
-    `python setup.py build_ext --inplace`
+    ```
+    cd monotonic_align
+    ```
+    ```
+    python setup.py build_ext --inplace
+    ```
     等待生成核心即可
 
 #### 其他
