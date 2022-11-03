@@ -40,6 +40,18 @@ AI语音本地生成并发送的yunzai插件
     python setup.py build_ext --inplace
     ```
     等待生成核心即可
+    
+2.  ERROR: No matching distribution found for torch==1.6.0      
+    解决方法：如果有conda
+    ```
+    conda install pytorch==1.6.0 torchvision==0.7.0 cpuonly -c pytorch
+    ```
+    如果没有conda，就用pip
+    ```
+    pip install torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+    ```    
+    下载如果很慢，请自行调整为清华源。
+    具体原因是这个1.6.0的torch版本比较老了，需要去pytorch历史里翻出来下载。
 
 #### 其他
 [gitee地址](https://gitee.com/sumght/vits_yunzai_plugin/tree/master)
