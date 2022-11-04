@@ -38,7 +38,7 @@ AI语音本地生成并发送的yunzai插件
 
 #### 常见问题
 1.  ModuleNotFoundError: No module named 'monotonic_align.monotonic_align.core'
-    解决方法：在vits的目录下，
+    解决方法：在vits和vits_bh3两个目录下，分别都执行，
     ```
     cd monotonic_align
     ```
