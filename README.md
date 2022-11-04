@@ -18,7 +18,13 @@ AI语音本地生成并发送的yunzai插件
     ```
 2.  将ys.pth权重文件放入本目录文件夹下vits/ys/目录下
     下载地址:
-    `https://pan.baidu.com/s/1Q4ujpNn56ZI_Caort5aIeg?pwd=rr4j`
+    ```
+    https://pan.baidu.com/s/1Q4ujpNn56ZI_Caort5aIeg?pwd=rr4j
+    ```
+    将bh3.pth权重文件放入本目录文件夹下vits_bh3/bh3/目录下
+    ```
+    https://pan.baidu.com/s/1_fC21h229_Z-tirp_9C7xQ?pwd=2pv3
+    ```
 3.  文件夹cd至本插件目录文件夹下 /vits，执行
     ```
     pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
