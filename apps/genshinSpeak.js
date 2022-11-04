@@ -3,6 +3,7 @@ import fetch from "node-fetch";
 import plugin from '../../../lib/plugins/plugin.js'
 import gsCfg from '../../genshin/model/gsCfg.js'
 import { createRequire } from 'module'
+import uploadRecord from '../uploadRecord.js'
 
 const require = createRequire(import.meta.url)
 const { exec } = require('child_process')
@@ -106,9 +107,12 @@ export class genshinSpeak extends plugin {
             if (error) {
                 console.log("生成失败", stderr);
                 e.reply(["生成失败，失败原因:" + stderr])
-            } else if (stdout) {
+            } else {
                 console.log("生成成功", stdout);
                 e.reply(segment.record("example.wav"))
+		sleep(3000)
+                e.reply(["电脑qq请不要点击专供手机qq的无损版"]);
+                await e.reply(await uploadRecord("example.wav", 0, false));
             }
         })
         if (data[1].length) {
@@ -256,10 +260,12 @@ export class genshinSpeak extends plugin {
             if (error) {
                 console.log("生成失败", stderr);
                 e.reply(["生成失败，失败原因:"+stderr])
-            } else if (stdout) {
+            } else {
                 console.log("生成成功", stdout);
                 e.reply(segment.record("example.wav"))
                 sleep(3000)
+		e.reply(["电脑qq请不要点击专供手机qq的无损版"]);
+                await e.reply(await uploadRecord("example.wav", 0, false));
             }
         })
         if (data[1].length) {
