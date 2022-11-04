@@ -58,7 +58,9 @@ AI语音本地生成并发送的yunzai插件
     ```    
     下载如果很慢，请自行调整为清华源。
     具体原因是这个1.6.0的torch版本比较老了，需要去pytorch历史里翻出来下载。
-
+3.  ERROR: Failed building wheel for pyopenjtalk
+    openjtalk的问题会出现在win用户上，linux则可以直接安装
+    win用户解决方法查看https://www.bilibili.com/video/BV13t4y1V7DV
 #### 其他
 [gitee地址](https://gitee.com/sumght/vits_yunzai_plugin/tree/master)
 预计下次更新会加入崩坏三人物语音生成，新的模型正在加紧炼制。
