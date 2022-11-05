@@ -80,6 +80,19 @@ AI语音本地生成原神/崩三语音并发送的yunzai插件
     
     openjtalk的问题会出现在win用户上，linux则可以直接安装
     win用户解决方法查看https://www.bilibili.com/video/BV13t4y1V7DV
+    
+4.  linux用户安装pyopenjtalk出问题
+    ```
+    raise CalledProcessError(self.returncode, self.args, self.stdout,
+    subprocess.CalledProcessError: Command '['cmake', '..', '-DHTS_ENGINE_INCLUDE_DIR=.', '-DHTS_ENGINE_LIB=dummy']' returned non-zero exit status 1.
+    [end of output]
+
+    note: This error originates from a subprocess, and is likely not a problem with pip.
+    error: subprocess-exited-with-error
+    ```
+    参考https://blog.csdn.net/qq_33882464/article/details/126677559
+    
+    
 #### 其他
 [gitee地址](https://gitee.com/sumght/vits_yunzai_plugin/tree/master)
 预计下次更新会加入崩坏三人物语音生成，新的模型正在加紧炼制。
