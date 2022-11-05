@@ -92,6 +92,10 @@ AI语音本地生成原神/崩三语音并发送的yunzai插件
     ```
     参考https://blog.csdn.net/qq_33882464/article/details/126677559
     
+5.  更多pyopenjtalk问题
+
+    参考原地址https://pypi.org/project/pyopenjtalk/
+    
     
 #### 其他
 [gitee地址](https://gitee.com/sumght/vits_yunzai_plugin/tree/master)
