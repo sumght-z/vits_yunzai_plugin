@@ -47,7 +47,7 @@ net_g = SynthesizerTrn(
 _ = net_g.eval()
 
 
-_ = utils.load_checkpoint("./plugins/vits-yunzai-Plugin/vits_bh3/bh3/bh3.pth, net_g, None)#G_389000.pth
+_ = utils.load_checkpoint("./plugins/vits-yunzai-Plugin/vits_bh3/bh3/bh3.pth", net_g, None)#G_389000.pth
 text=args.text
 stn_tst = get_text(text, hps)
 with torch.no_grad():
