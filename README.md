@@ -113,6 +113,12 @@ AI语音本地生成原神/崩三语音并发送的yunzai插件
     解决方法：https://www.jianshu.com/p/cc1a10a79cfa
 
     缺少libsndfile，查看 SoundFile官网，发现需要安装libsndfile
+
+7.  如果出现没报错或者是显示着成功但是不生成的情况，去yunzai根目录运行指令
+    ```
+    python ./plugins/vits-yunzai-Plugin/vits/run_new.py --character=0 --text=你好啊，做一个测试。
+    ```
+    看看那儿有没有报错，yunzai根目录有没有生成example.wav
     
 #### 其他
 [gitee地址](https://gitee.com/sumght/vits_yunzai_plugin/tree/master)
