@@ -78,6 +78,13 @@ AI语音本地生成原神/崩三语音并发送的yunzai插件
     ```    
     下载如果很慢，请自行调整为清华源。
     具体原因是这个1.6.0的torch版本比较老了，需要去pytorch历史里翻出来下载。
+    确定安装好后，去requirements.txt删去
+    ```
+    torch==1.6.0
+    torchvision==0.7.0
+    ```
+    后继续安装环境。
+    
 3.  ERROR: Failed building wheel for pyopenjtalk
     
     openjtalk的问题会出现在win用户上，linux则可以直接安装
