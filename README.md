@@ -9,7 +9,7 @@ AI语音本地生成原神/崩三语音并发送的yunzai插件
 2.  如果不确定是哪个依赖有问题，可以开启机器人，发送指令让它尝试生成，它会抛出错误。
 3.  生成语音报错请仔细看抛出的报错信息，并提交issues或者是在群里询问。目前版本尚在测试阶段，擅于面向百度编程.jpg
 4.  现已支持显卡推演，速度提高30-50倍，实测单核cpu推演生成189字句子需要6min，RTX2060显卡只需要3-5秒即可生成。开启gpu推演需要你有显卡和正确安装对应版本cuda，输入开启gpu/关闭gpu。
-5.  目前看来，不要用win server2012版本，msvc的组件时会弹出不兼容，即使安装好了cmake也报错。推荐要么server2019（和我一样），要么linux。
+5.  目前看来，不要用win server2012版本，msvc的组件时会弹出不兼容，即使安装好了cmake也报错。推荐要么server2019（和我一样），要么linux。还有人在issues提到，3.10的python安装torch会出现错误。
 
 
 #### 安装教程
@@ -119,6 +119,9 @@ AI语音本地生成原神/崩三语音并发送的yunzai插件
     python ./plugins/vits-yunzai-Plugin/vits/run_new.py --character=0 --text=你好啊，做一个测试。
     ```
     看看那儿有没有报错，yunzai根目录有没有生成example.wav
+    
+8.  安装过霄鸟插件的，因为霄鸟有个自己的虚拟环境，导致你安装了包，但是依然会报没安装环境的错误。需要自己找到你环境安装好了的这个python位置，去手动添加全局变量path，
+    不然怎么装都是报没有装环境。
     
 #### 其他
 [gitee地址](https://gitee.com/sumght/vits_yunzai_plugin/tree/master)
