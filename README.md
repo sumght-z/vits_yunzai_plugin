@@ -90,16 +90,27 @@ AI语音本地生成原神/崩三语音并发送的yunzai插件
     openjtalk的问题会出现在win用户上，linux则可以直接安装
     win用户解决方法查看https://www.bilibili.com/video/BV13t4y1V7DV
     
-4.  linux用户安装pyopenjtalk出问题
+4.  linux用户安装pyopenjtalk (感谢[@xi-yun](https://gitee.com/xi-yun)提供)
+    环境Ubuntu20.04，python3.8.10
+    安装步骤：
+    1.安装cmake
     ```
-    raise CalledProcessError(self.returncode, self.args, self.stdout,
-    subprocess.CalledProcessError: Command '['cmake', '..', '-DHTS_ENGINE_INCLUDE_DIR=.', '-DHTS_ENGINE_LIB=dummy']' returned non-zero exit status 1.
-    [end of output]
-
-    note: This error originates from a subprocess, and is likely not a problem with pip.
-    error: subprocess-exited-with-error
+    apt install cmake
     ```
-    参考https://blog.csdn.net/qq_33882464/article/details/126677559
+    2.安装依赖库
+    ```
+    sudo apt-get install build-essential python3-dev libssl-dev libffi-dev libxml2 libxml2-dev libxslt1-dev zlib1g-dev
+    ```
+    参考[文章](https://blog.csdn.net/weixin_42912498/article/details/108443386)
+    
+    3.升级pip
+    ```
+    python -m pip install --upgrade pip
+    ```
+    4.安装pyopenjtalk
+    ```
+    pip install pyopenjtalk==0.2.0
+    ```
     
 5.  更多pyopenjtalk问题
 
