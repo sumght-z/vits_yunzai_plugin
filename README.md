@@ -85,15 +85,16 @@ AI语音本地生成原神/崩三语音并发送的yunzai插件
     ```
     后继续安装环境。
     
-3.  ERROR: Failed building wheel for pyopenjtalk
-    
-    openjtalk的问题会出现在win用户上，linux则可以直接安装
+# pyopenjtalk安装
+#### 极为重要，百分之90的人都是这儿卡壳，仔细查看
+3. window用户安装pyopenjtalk
     win用户解决方法查看https://www.bilibili.com/video/BV13t4y1V7DV
-    
+
 4.  linux用户安装pyopenjtalk (感谢[@xi-yun](https://gitee.com/xi-yun)提供)
 
     环境Ubuntu20.04，python3.8.10
     安装步骤：
+
     1.安装cmake
     ```
     apt install cmake
@@ -103,7 +104,7 @@ AI语音本地生成原神/崩三语音并发送的yunzai插件
     sudo apt-get install build-essential python3-dev libssl-dev libffi-dev libxml2 libxml2-dev libxslt1-dev zlib1g-dev
     ```
     参考[文章](https://blog.csdn.net/weixin_42912498/article/details/108443386)
-    
+
     3.升级pip
     ```
     python -m pip install --upgrade pip
