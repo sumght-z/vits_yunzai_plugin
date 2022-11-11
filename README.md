@@ -37,7 +37,7 @@ qq群：433567006 （由于崩三模型还在不停炼，懒得每次都上传�
     ```
     pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
     ```
-    安装环境
+    安装环境，在安装过程中如果报错，根据常见问题和issues解决问题后，重复执行步骤3，直到环境完全安装完毕。
 
 #### 使用说明
 
