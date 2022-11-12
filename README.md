@@ -11,18 +11,18 @@ qq群：433567006 （由于崩三模型还在不停炼，懒得每次都上传�
 2.  如果不确定是哪个依赖有问题，可以开启机器人，发送指令让它尝试生成，它会抛出错误。
 3.  生成语音报错请仔细看抛出的报错信息，并提交issues或者是在群里询问。目前版本尚在测试阶段，擅于面向百度编程.jpg
 4.  现已支持显卡推演，速度提高30-50倍，实测单核cpu推演生成189字句子需要6min，RTX2060显卡只需要3-5秒即可生成。开启gpu推演需要你有显卡和正确安装对应版本cuda，输入开启gpu/关闭gpu。
-5.  目前看来，不要用win server2012版本，msvc的组件时会弹出不兼容，即使安装好了cmake也报错。推荐要么server2019（和我一样），要么linux。还有人在issues提到，3.10的python安装torch会出现错误。
-6.  测试目前安装情况，需要查漏补缺，在yunzai根目录下运行
+5.  测试目前安装情况，需要查漏补缺，在yunzai根目录下运行
     ```
     python ./plugins/vits-yunzai-Plugin/vits/run_new.py --character=0 --text=你好啊，做一个测试。
     ```
     它会告诉你现在哪个包缺失。然后根据报错去常见问题查看解决方案。也可以自行进行判断，输入 pip list 查看当前环境依赖安装情况。
 
+
 #### 安装教程
 
 1.  yunzai根目录下输入
     ```
-    git clone https://github.com/sumght-z/vits_yunzai_plugin.git ./plugins/vits-yunzai-Plugin/
+    git clone https://gitee.com/sumght/vits_yunzai_plugin.git ./plugins/vits-yunzai-Plugin/
     ```
 2.  将ys.pth权重文件放入本目录文件夹下vits/ys/目录下
     下载地址:
@@ -46,12 +46,12 @@ qq群：433567006 （由于崩三模型还在不停炼，懒得每次都上传�
 
     原神音色，支持别称:
 
-    派蒙,凯亚,安柏,丽莎,琴,香菱,枫原万叶,迪卢克,温迪,可莉,早柚,托马,芭芭拉,优菈,云堇,钟离,魈,凝光,雷电将军,北斗,甘雨,七七,刻晴,神里绫华,戴因斯雷布,雷泽,神里绫人,罗莎莉亚,阿贝多,八      重神子,宵宫,荒泷一斗,九条裟罗,夜兰,珊瑚宫心海,五郎,散兵,女士,达达利亚,莫娜,班尼特,申鹤,行秋,烟绯,久岐忍,辛焱,砂糖,胡桃,重云,菲谢尔,诺艾尔,迪奥娜,鹿野院平藏
+    派蒙,凯亚,安柏,丽莎,琴,香菱,枫原万叶,迪卢克,温迪,可莉,早柚,托马,芭芭拉,优菈,云堇,钟离,魈,凝光,雷电将军,北斗,甘雨,七七,刻晴,神里绫华,戴因斯雷布,雷泽,神里绫人,罗                        莎莉亚,阿贝多,八重神子,宵宫,荒泷一斗,九条裟罗,夜兰,珊瑚宫心海,五郎,散兵,女士,达达利亚,莫娜,班尼特,申鹤,行秋,烟绯,久岐忍,辛焱,砂糖,胡桃,重云,菲谢尔,诺艾尔,迪奥娜,鹿    野院平藏
 
     崩坏三音色,不支持别称：
 
     丽塔,伊甸,八重樱,卡莲,卡萝尔,姬子,布洛妮娅,希儿,帕朵菲莉丝,幽兰黛尔,德丽莎,格蕾修,梅比乌斯,渡鸦,爱莉希雅,琪亚娜,符华,维尔薇,芽衣,阿波尼亚,空律,识律
-
+    
     柚子社音色:（接口实现）
 
     绫地宁宁,因幡巡,朝武芳乃,常陆茉子,丛雨,鞍马小春,在原七海
@@ -61,7 +61,7 @@ qq群：433567006 （由于崩三模型还在不停炼，懒得每次都上传�
     星爷,鬼,葛优,四川话,粤语,loli,东北话,然然
 
     格式: 音色+说+要说的话
-    
+
 #### 常见问题
 1.  ModuleNotFoundError: No module named 'monotonic_align.monotonic_align.core'
     解决方法：在vits和vits_bh3两个目录下，分别都执行，
@@ -72,7 +72,7 @@ qq群：433567006 （由于崩三模型还在不停炼，懒得每次都上传�
     python setup.py build_ext --inplace
     ```
     等待生成核心即可
-    
+
 2.  ERROR: No matching distribution found for torch==1.6.0      
     解决方法：如果有conda
     ```
@@ -82,7 +82,7 @@ qq群：433567006 （由于崩三模型还在不停炼，懒得每次都上传�
     ```
     pip install torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
     ```    
-    下载如果很慢，请自行调整为清华源。
+  
     具体原因是这个1.6.0的torch版本比较老了，需要去pytorch历史里翻出来下载。
     确定安装好后，去requirements.txt删去
     ```
@@ -90,11 +90,12 @@ qq群：433567006 （由于崩三模型还在不停炼，懒得每次都上传�
     torchvision==0.7.0
     ```
     后继续安装环境。
-    
-# pyopenjtalk安装
+
+# pyopenjtalk安装（依然是常见问题里的，常见问题不止上面三个，接着往下看）
 #### 极为重要，百分之90的人都是这儿卡壳，仔细查看
 3. window用户安装pyopenjtalk
     win用户解决方法查看https://www.bilibili.com/video/BV13t4y1V7DV
+    现在更新也更简单的方法，请查看https://gitee.com/sumght/vits_yunzai_plugin/issues/I6088Z 直接下载编译好的文件开箱即用
 
 4.  linux用户安装pyopenjtalk (感谢[@xi-yun](https://gitee.com/xi-yun)提供)
 
@@ -119,11 +120,11 @@ qq群：433567006 （由于崩三模型还在不停炼，懒得每次都上传�
     ```
     pip install pyopenjtalk==0.2.0
     ```
-    
+
 5.  更多pyopenjtalk问题
 
     参考原地址https://pypi.org/project/pyopenjtalk/
-    
+
 6.  出现
     ```
     OSError: cannot load library 'libsndfile.so': libsndfile.so: cannot open shared object file: No such file or directory
@@ -138,15 +139,16 @@ qq群：433567006 （由于崩三模型还在不停炼，懒得每次都上传�
     python ./plugins/vits-yunzai-Plugin/vits/run_new.py --character=0 --text=你好啊，做一个测试。
     ```
     看看那儿有没有报错，yunzai根目录有没有生成example.wav
-    
+
 8.  安装过霄鸟插件的，因为霄鸟有个自己的虚拟环境，导致你安装了包，但是依然会报没安装环境的错误。需要自己找到你环境安装好了的这个python位置，去手动添加全局变量path，
     不然怎么装都是报没有装环境。
-    
+
 #### 其他
 [gitee地址](https://gitee.com/sumght/vits_yunzai_plugin/tree/master)
 预计下次更新会加入崩坏三人物语音生成，新的模型正在加紧炼制。
 
-# 安装查询（上述安装过程差啥东西，自行在这儿查询，比如你发现你python版本不对又不会安装，那么就来这儿查看）
+# 安装查询
+####（上述安装过程差啥东西，自行在这儿查询，比如你发现你python版本不对又不会安装，那么就来这儿查看）
 #### python环境
 
 * 1.安装
