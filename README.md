@@ -5,7 +5,7 @@ AI语音本地生成原神/崩三语音并发送的yunzai插件
 
 qq群：433567006 （由于崩三模型还在不停炼，懒得每次都上传网盘，将在qq群里更新）
 
-项目生成效果演示：https://www.bilibili.com/video/BV1K24y117pb
+项目生成效果演示：https://www.bilibili.com/video/BV1ke4y1p7qq
 
 #### 安装须知
 1.  请确保你的环境存在python3.6+
