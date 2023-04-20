@@ -151,7 +151,7 @@ export class genshinSpeak extends plugin {
                 onwork=0;
             }
         })
-        await e.reply("生成字数：" + data[1].length + "电脑别点高清语音")
+        await e.reply("生成字数：" + data[1].length )
         
         return true;
     }
@@ -306,7 +306,7 @@ export class genshinSpeak extends plugin {
                 onwork=0;
             }
         })
-        await e.reply("生成字数：" + data[1].length + "电脑别点高清语音")
+        await e.reply("生成字数：" + data[1].length )
         return true;
 	}
 	
