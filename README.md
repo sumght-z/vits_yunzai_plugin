@@ -17,7 +17,7 @@ pro分支暂时关闭
 4.  现已支持显卡推演，速度提高30-50倍，实测单核cpu推演生成189字句子需要6min，RTX2060显卡只需要3-5秒即可生成。开启gpu推演需要你有显卡和正确安装对应版本cuda，输入开启gpu/关闭gpu。
 5.  测试目前安装情况，需要查漏补缺，在yunzai根目录下运行
     ```
-    python ./plugins/vits-yunzai-Plugin/vits/run_new.py --character=0 --text=你好啊，做一个测试。
+    python ./plugins/vits-yunzai-plugin/vits/run_new.py --character=0 --text=你好啊，做一个测试。
     ```
     它会告诉你现在哪个包缺失。然后根据报错去常见问题查看解决方案。也可以自行进行判断，输入 pip list 查看当前环境依赖安装情况。
 
