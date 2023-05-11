@@ -133,7 +133,7 @@ export class genshinSpeak extends plugin {
         var py='run_new.py'
 		if(gpu==0){py='run_new.py'};
 		if(gpu==1){py='run_old.py'};
-        var cmdStr = 'python ./plugins/vits-yunzai-Plugin/vits/'+ py +' --character=' + characternum + ' --text=' + data[1];
+        var cmdStr = 'python ./plugins/vits-yunzai-plugin/vits/'+ py +' --character=' + characternum + ' --text=' + data[1];
         exec(cmdStr, async function (error, stdout, stderr) {
             if (error) {
                 console.log("生成失败", stderr);
@@ -288,7 +288,7 @@ export class genshinSpeak extends plugin {
         var py='run_new.py'
 		if(gpu==0){py='run_new.py'};
 		if(gpu==1){py='run_old.py'};
-        var cmdStr = 'python ./plugins/vits-yunzai-Plugin/vits_bh3/'+ py +' --character=' + characternum_bh3 + ' --text=' + data[1];
+        var cmdStr = 'python ./plugins/vits-yunzai-plugin/vits_bh3/'+ py +' --character=' + characternum_bh3 + ' --text=' + data[1];
         exec(cmdStr, async function (error, stdout, stderr) {
             if (error) {
                 console.log("生成失败", stderr);
