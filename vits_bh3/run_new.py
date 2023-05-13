@@ -35,7 +35,7 @@ def get_text(text, hps):
     text_norm = torch.LongTensor(text_norm)
     return text_norm
 
-hps = utils.get_hparams_from_file("./plugins/vits-yunzai-Plugin/vits_bh3/configs/bh3.json")
+hps = utils.get_hparams_from_file("./plugins/vits-yunzai-plugin/vits_bh3/configs/bh3.json")
 
 
 
@@ -48,7 +48,7 @@ net_g = SynthesizerTrn(
 _ = net_g.eval()
 
 
-_ = utils.load_checkpoint("./plugins/vits-yunzai-Plugin/vits_bh3/bh3/bh3.pth", net_g, None)
+_ = utils.load_checkpoint("./plugins/vits-yunzai-plugin/vits_bh3/bh3/bh3.pth", net_g, None)
 text=args.text
 stn_tst = get_text(text, hps)
 with torch.no_grad():
