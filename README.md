@@ -31,7 +31,7 @@ https://www.bilibili.com/video/BV1ot4y1P7a7
 
 1.  yunzai根目录下输入
     ```
-    git clone https://gitee.com/sumght/vits_yunzai_plugin.git ./plugins/vits-yunzai-plugin/
+    git clone https://gitee.com/sumght/vits-yunzai-plugin.git ./plugins/vits-yunzai-plugin/
     ```
 2.  将ys.pth权重文件放入本目录文件夹下vits/ys/目录下
     下载地址:
