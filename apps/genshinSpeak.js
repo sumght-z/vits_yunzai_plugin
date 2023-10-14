@@ -1,9 +1,8 @@
-import { segment } from "oicq";
-import fetch from "node-fetch";
+import fetch from 'node-fetch'
 import plugin from '../../../lib/plugins/plugin.js'
 import gsCfg from '../../genshin/model/gsCfg.js'
 import { createRequire } from 'module'
-import uploadRecord from '../uploadRecord.js'
+import { Version } from '../components/index.js'
 
 const require = createRequire(import.meta.url)
 const { exec } = require('child_process')
@@ -145,7 +144,7 @@ export class genshinSpeak extends plugin {
                 e.reply(segment.record("example.wav"))
                 }
                 sleep(3000)
-				if(ex_wav==1){
+				if(ex_wav==1 && !Version.isTrss){
                 await e.reply(await uploadRecord("example.wav", 0, false));
 				}
                 onwork=0;
