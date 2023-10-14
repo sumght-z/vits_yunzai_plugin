@@ -99,6 +99,10 @@ https://www.bilibili.com/video/BV1ot4y1P7a7
     torchvision==0.7.0
     ```
     后继续安装环境。
+    如果高版本装不成py3.7-3.8可用以下命令
+    ```
+    pip install torch==1.9.0+cpu torchvision==0.10.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+    ```
 
 # pyopenjtalk安装（依然是常见问题里的，常见问题不止上面三个，接着往下看）
 #### 极为重要，百分之90的人都是这儿卡壳，仔细查看
