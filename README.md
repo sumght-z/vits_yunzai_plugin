@@ -1,225 +1,228 @@
-# vits_yunzai_plugin
+﻿# vits-yunzai-plugin
 
-#### 介绍
-AI语音本地生成原神/崩三语音并发送的yunzai插件
-
-qq群：433567006 （由于崩三模型还在不停炼，懒得每次都上传网盘，将在qq群里更新）
+一个聚焦 **中文本地语音推理** 的 Yunzai 插件二开版本。方便快捷，自带一键环境安装，适配网页api调用。
 
 项目生成效果演示：https://www.bilibili.com/video/BV1ke4y1p7qq
 
-pro分支暂时关闭
+qq群：433567006
 
-#### 安装须知
-1.  请确保你的环境存在python3.6+
-    原则上vits的环境是python3.6+，插件作者本机使用的是3.7版本，云服务器用的3.8版本
-2.  如果不确定是哪个依赖有问题，可以开启机器人，发送指令让它尝试生成，它会抛出错误。
-3.  生成语音报错请仔细看抛出的报错信息，并提交issues或者是在群里询问。目前版本尚在测试阶段，擅于面向百度编程.jpg
-4.  现已支持显卡推演，速度提高30-50倍，实测单核cpu推演生成189字句子需要6min，RTX2060显卡只需要3-5秒即可生成。开启gpu推演需要你有显卡和正确安装对应版本cuda，输入开启gpu/关闭gpu。
-5.  测试目前安装情况，需要查漏补缺，在yunzai根目录下运行
-    ```
-    python ./plugins/vits-yunzai-plugin/vits/run_new.py --character=0 --text=你好啊，做一个测试。
-    ```
-    它会告诉你现在哪个包缺失。然后根据报错去常见问题查看解决方案。也可以自行进行判断，输入 pip list 查看当前环境依赖安装情况。
+当前版本仅保留：
 
-### windows视频教程
+- 原神中文语音
+- 崩三中文语音
+- 内置 HTTP API
+- 最小 Web 试听页
 
-https://www.bilibili.com/video/BV1ot4y1P7a7
+不再保留旧版远程接口音色链路。
 
-支持所有windows，10分钟开箱即装。从零开始手把手教你安装
+## 当前状态
 
-#### 安装教程
+- 已完成原神 / 崩三统一运行入口收敛
+- 已完成常驻 Python Worker 改造，避免每次请求重新加载模型
+- 已完成独立端到端验证：直连合成、API、音频获取、Web 首页均已通过
+- 已支持通过相对路径配置进行可移植部署
 
-1.  yunzai根目录下输入
-    ```
-    git clone https://gitee.com/sumght/vits-yunzai-plugin.git ./plugins/vits-yunzai-plugin/
-    ```
-2.  将ys.pth权重文件放入本目录文件夹下vits/ys/目录下
-    下载地址:
-    ```
-    https://pan.baidu.com/s/1Q4ujpNn56ZI_Caort5aIeg?pwd=rr4j
-    ```
-    将bh3.pth权重文件放入本目录文件夹下vits_bh3/bh3/目录下
-    ```
-    https://pan.baidu.com/s/1_fC21h229_Z-tirp_9C7xQ?pwd=2pv3
-    ```
-3.  文件夹cd至本插件目录文件夹下 /vits，执行
-    ```
-    pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
-    ```
-    安装环境，在安装过程中如果报错，根据常见问题和issues解决问题后，重复执行步骤3，直到环境完全安装完毕。
+## 目录约定
 
-#### 使用说明
+默认模型目录：
 
-1.  输入音色列表即可查看可输出角色
-2.  输入xxx说xxxx即可生成对应语句
+- `vits/models/genshin/ys.pth`
+- `vits/models/bh3/bh3.pth`
 
-    原神音色，支持别称:
+默认 Python 环境：
 
-    派蒙,凯亚,安柏,丽莎,琴,香菱,枫原万叶,迪卢克,温迪,可莉,早柚,托马,芭芭拉,优菈,云堇,钟离,魈,凝光,雷电将军,北斗,甘雨,七七,刻晴,神里绫华,戴因斯雷布,雷泽,神里绫人,罗                        莎莉亚,阿贝多,八重神子,宵宫,荒泷一斗,九条裟罗,夜兰,珊瑚宫心海,五郎,散兵,女士,达达利亚,莫娜,班尼特,申鹤,行秋,烟绯,久岐忍,辛焱,砂糖,胡桃,重云,菲谢尔,诺艾尔,迪奥娜,鹿    野院平藏
+- Windows：`.venv/Scripts/python.exe`
+- Linux：`.venv/bin/python`
 
-    崩坏三音色,不支持别称：
+默认配置文件：
 
-    丽塔,伊甸,八重樱,卡莲,卡萝尔,姬子,布洛妮娅,希儿,帕朵菲莉丝,幽兰黛尔,德丽莎,格蕾修,梅比乌斯,渡鸦,爱莉希雅,琪亚娜,符华,维尔薇,芽衣,阿波尼亚,空律,识律
-    
-    柚子社音色:（接口实现）
+- `config/config.json`
 
-    绫地宁宁,因幡巡,朝武芳乃,常陆茉子,丛雨,鞍马小春,在原七海
+## 配置说明
 
-    其他音色:（接口实现）
+当前配置已支持 **相对路径持久化**。
 
-    星爷,鬼,葛优,四川话,粤语,loli,东北话,然然
+默认配置示例：
 
-    格式: 音色+说+要说的话
-
-#### 常见问题
-1.  ModuleNotFoundError: No module named 'monotonic_align.monotonic_align.core'
-    解决方法：在vits和vits_bh3两个目录下，分别都执行，
-    ```
-    cd monotonic_align
-    ```
-    ```
-    python setup.py build_ext --inplace
-    ```
-    等待生成核心即可
-
-2.  ERROR: No matching distribution found for torch==1.6.0      
-    解决方法：如果有conda
-    ```
-    conda install pytorch==1.6.0 torchvision==0.7.0 cpuonly -c pytorch
-    ```
-    如果没有conda，就用pip
-    ```
-    pip install torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
-    ```    
-  
-    具体原因是这个1.6.0的torch版本比较老了，需要去pytorch历史里翻出来下载。
-    确定安装好后，去requirements.txt删去
-    ```
-    torch==1.6.0
-    torchvision==0.7.0
-    ```
-    后继续安装环境。
-    如果高版本装不成py3.7-3.8可用以下命令
-    ```
-    pip install torch==1.9.0+cpu torchvision==0.10.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
-    ```
-
-# pyopenjtalk安装（依然是常见问题里的，常见问题不止上面三个，接着往下看）
-#### 极为重要，百分之90的人都是这儿卡壳，仔细查看
-3. window用户安装pyopenjtalk
-    win用户解决方法查看https://www.bilibili.com/video/BV13t4y1V7DV
-
-
-4.  linux用户安装pyopenjtalk (感谢[@xi-yun](https://gitee.com/xi-yun)提供)
-
-    环境Ubuntu20.04，python3.8.10
-    安装步骤：
-
-    1.安装cmake
-    ```
-    apt install cmake
-    ```
-    2.安装依赖库
-    ```
-    sudo apt-get install build-essential python3-dev libssl-dev libffi-dev libxml2 libxml2-dev libxslt1-dev zlib1g-dev
-    ```
-    参考[文章](https://blog.csdn.net/weixin_42912498/article/details/108443386)
-
-    3.升级pip
-    ```
-    python -m pip install --upgrade pip
-    ```
-    4.安装pyopenjtalk
-    ```
-    pip install pyopenjtalk==0.2.0
-    ```
-
-5.  更多pyopenjtalk问题
-
-    参考原地址https://pypi.org/project/pyopenjtalk/
-
-6.  出现
-    ```
-    OSError: cannot load library 'libsndfile.so': libsndfile.so: cannot open shared object file: No such file or directory
-    ```
-    等一系列关于libsndfile的问题
-    解决方法：https://www.jianshu.com/p/cc1a10a79cfa
-
-    缺少libsndfile，查看 SoundFile官网，发现需要安装libsndfile
-
-7.  如果出现没报错或者是显示着成功但是不生成的情况，去yunzai根目录运行指令
-    ```
-    python ./plugins/vits-yunzai-Plugin/vits/run_new.py --character=0 --text=你好啊，做一个测试。
-    ```
-    看看那儿有没有报错，yunzai根目录有没有生成example.wav
-
-8.  安装过霄鸟插件的，因为霄鸟有个自己的虚拟环境，导致你安装了包，但是依然会报没安装环境的错误。需要自己找到你环境安装好了的这个python位置，去手动添加全局变量path，
-    不然怎么装都是报没有装环境。
-
-#### 其他
-[gitee地址](https://gitee.com/sumght/vits_yunzai_plugin/tree/master)
-预计下次更新会加入崩坏三人物语音生成，新的模型正在加紧炼制。
-
-# 安装查询
-####（上述安装过程差啥东西，自行在这儿查询，比如你发现你python版本不对又不会安装，那么就来这儿查看）
-#### python环境
-
-* 1.安装
-
-  
-
-  * **win用户**
-
-    windows不管之前装没装过，再下一次**python3.7**就行了，我放个python3.7.3的链接
-
-    > https://wwp.lanzoub.com/ioagG0a3xufc
-    > 密码:atri
-
-    Add python 3.7 to PATH的√**一定要勾上**
-
-    > 如果是云服务器请需要再安装一个部件https://aka.ms/vs/16/release/vc_redist.x64.exe
-
-  * **centos用户**
-
-    python版本切换到3.7后，需要将yum使用的python再次连接到python2.7
-
-    >  方法：去`/usr/bin/yum`和`/usr/libexec/urlgrabber-ext-down`把第一行的python改成python2或者python2.7
-
-    然后安装一个包
-
-    ```
-    yum install libsndfile
-    ```
-
-* 2.**检查python版本**！！！！！！(**非常重要**)
-
-  输入`python -V`和`pip -V`
-
-  输出应该是`Python 3.7.3`和`xxxxx (python 3.7)`
-
-* 3.升级pip
-
-  ```
-  python -m pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple/
-  ```
-
-#### ffmpeg配置
-
-* Windows用户[点我下载ffmpeg](https://wwp.lanzoub.com/ifhhC091vp3a)解压之后放在一个之后不会移动的目录下(**路径中无中文无空格**)
-
-  > **windows2012**请下载：https://pan.baidu.com/s/1VeCe-1z9kKHhH9KD0QRHYA?pwd=atri 
-  > 提取码：atri
-
-* 去`Yunzai-Bot\config\config\bot.yaml`里面填写路径
-
-示例：(请复制自己的路径进行配置)**冒号后面有一个空格**！！！！！
-
-```
-# ffmpeg
-ffmpeg_path: D:\software\ffmpeg\bin\ffmpeg.exe
-ffprobe_path: D:\software\ffmpeg\bin\ffprobe.exe
+```json
+{
+  "enabled": true,
+  "server": {
+    "host": "127.0.0.1",
+    "port": 5091,
+    "apiEnabled": true,
+    "webEnabled": true
+  },
+  "storage": {
+    "modelsRoot": "vits/models"
+  },
+  "python": {
+    "executable": ".venv/Scripts/python.exe",
+    "workerScript": "python/tts_worker.py"
+  },
+  "synthesis": {
+    "outputDir": "data/audio"
+  },
+  "models": {
+    "genshin": {
+      "cwd": "vits",
+      "configPath": "vits/configs/ys.json",
+      "checkpointPath": "genshin/ys.pth"
+    },
+    "bh3": {
+      "cwd": "vits",
+      "configPath": "vits/configs/bh3.json",
+      "checkpointPath": "bh3/bh3.pth"
+    }
+  }
+}
 ```
 
-> 配置过环境变量的**win用户**建议填写和环境变量路径一样的路径
->
-> **linux用户**推荐原码编译后输入`whereis ffmpeg`和`whereis ffprobe`找到ffmpeg的位置
+说明：
+
+- `storage.modelsRoot` 是模型挂载根目录
+- `checkpointPath` 默认相对 `storage.modelsRoot` 解析
+- 若你需要把模型放到插件目录外，也可以把 `checkpointPath` 改成绝对路径或显式 `./` 相对插件根目录的路径
+- 配置落盘时会优先保留可移植的相对路径形式
+
+## 安装步骤
+
+### 1. 放置插件
+
+将插件放到 Yunzai 的插件目录中。
+
+### 2. 创建项目内 Python 环境
+
+推荐直接使用一键脚本（在yunzai插件目录使用powershell输入）：
+
+Windows PowerShell：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\vits-yunzai-plugin\scripts\setup-env.ps1
+```
+
+Linux：
+
+```bash
+bash ./vits-yunzai-plugin/scripts/setup-env.sh
+```
+
+脚本默认会完成：
+
+- 若本机找不到 Python 3.11，则自动下载一份项目内可用的 Python 3.11 运行时（缓存到 `.python-runtime/`）
+- 创建 `.venv`
+- 升级 `pip / setuptools / wheel`
+- 安装 `python/requirements-cpu.txt`
+- 初始化 `config/config.json`（若不存在）
+
+说明：
+
+- 自动下载的 Python 运行时来自 `astral-sh/python-build-standalone` 发布包
+- 当前脚本会按当前平台 / 架构自动匹配对应安装包；若你已经自行安装了 Python 3.11，则优先复用系统解释器
+- `.python-runtime/` 仅作为项目内自举运行时缓存，不影响最终 `.venv` 的使用方式
+
+如需手动执行，也可以继续使用下面的命令：
+
+Windows：
+
+```powershell
+py -3.11 -m venv .\vits-yunzai-plugin\.venv
+.\vits-yunzai-plugin\.venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
+.\vits-yunzai-plugin\.venv\Scripts\python.exe -m pip install -r .\vits-yunzai-plugin\python\requirements-cpu.txt
+```
+
+Linux：
+
+```bash
+python3.11 -m venv ./vits-yunzai-plugin/.venv
+./vits-yunzai-plugin/.venv/bin/python -m pip install --upgrade pip setuptools wheel
+./vits-yunzai-plugin/.venv/bin/python -m pip install -r ./vits-yunzai-plugin/python/requirements-cpu.txt
+```
+
+### 3. 放置模型权重
+
+- 原神：`vits/models/genshin/ys.pth`
+- 崩三：`vits/models/bh3/bh3.pth`
+
+### 4. 启动并验证
+
+如果你希望先脱离 Yunzai 验证完整链路，可直接运行：
+
+```bash
+node vits-yunzai-plugin/scripts/verify-standalone.mjs
+```
+
+验证通过后，再接回 Yunzai 侧联调。
+
+如果你希望**不启动 Yunzai，直接独立启动服务**，可运行：
+
+```bash
+node vits-yunzai-plugin/scripts/start-standalone.mjs api
+node vits-yunzai-plugin/scripts/start-standalone.mjs web
+node vits-yunzai-plugin/scripts/start-standalone.mjs all
+```
+
+说明：
+
+- `api`：仅启动 HTTP API
+- `web`：启动 Web 页面；由于当前 Web 页面依赖 `/api/*`，因此会同时启动 API
+- `all`：同时启动 API 与 Web
+- 停止方式：在当前终端按 `Ctrl + C`
+
+## 使用说明
+
+### Yunzai 命令
+
+- `音色列表`：查看当前可用音色
+- `语音状态`：查看语音 / API / Web / worker 状态
+- `角色名说文本`：生成语音
+- `开启语音`
+- `关闭语音`
+- `开启API` / `关闭API`
+- `开启Web` / `关闭Web`
+
+### HTTP API
+
+默认地址：`http://127.0.0.1:5091`
+
+- `GET /api/health`
+- `GET /api/speakers`
+- `POST /api/synthesize`
+- `GET /api/audio/:filename`
+
+### Web 页面
+
+- `GET /`
+
+### 独立启动命令
+
+- `node vits-yunzai-plugin/scripts/start-standalone.mjs api`
+- `node vits-yunzai-plugin/scripts/start-standalone.mjs web`
+- `node vits-yunzai-plugin/scripts/start-standalone.mjs all`
+
+## 独立验证结果
+
+当前已确认以下链路可用：
+
+- 原神直连合成
+- 崩三直连合成
+- `GET /api/health`
+- `GET /api/speakers`
+- `POST /api/synthesize`
+- `GET /api/audio/:filename`
+- `GET /`
+
+## 已知说明
+
+- Python Worker 首次真实合成时按模型懒加载
+- Windows 下已通过 `-X utf8`、`PYTHONIOENCODING=utf-8`、`PYTHONUTF8=1` 修复 Node → Python 中文管道编码问题
+- `jieba`、checkpoint 等日志当前仍会输出到 Worker 日志，但不影响功能
+- 历史 `vits_bh3/` 目录已从当前仓库清理；崩三能力现统一由 `vits/` 运行核心承载
+
+## 参考文档
+
+- `用户使用.md`
+- `python/README.md`
+- `../docs/DEPLOY.md`
+- `../docs/HANDOFF.md`
+- `../docs/API.md`

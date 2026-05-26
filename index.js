@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import { Version } from './components/index.js'
+import { ensureRuntime } from './services/runtime.js'
 
 if (!global.core) {
   if (Version.isTrss) {
@@ -23,6 +24,13 @@ logger.info('---------=.=---------')
 logger.info(`AI语音生成插件${Version.version}载入成功~qwq`)
 logger.info(`作者-sumght 2022.11.3`)
 logger.info(`---------------------`)
+
+try {
+  await ensureRuntime()
+} catch (error) {
+  logger.error?.('[vits-yunzai-plugin] 初始化运行时失败')
+  logger.error?.(error)
+}
 
 files.forEach((file) => {
   ret.push(import(`./apps/${file}`))

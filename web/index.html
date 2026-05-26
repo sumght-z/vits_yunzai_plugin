@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vits-yunzai-plugin Web 试听页</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 24px; line-height: 1.6; }
+      .card { border: 1px solid #ddd; border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+      textarea, select, button { width: 100%; padding: 10px; margin-top: 8px; box-sizing: border-box; }
+      button { cursor: pointer; }
+      code { background: #f5f5f5; padding: 2px 6px; border-radius: 6px; }
+      .muted { color: #666; font-size: 14px; }
+    </style>
+  </head>
+  <body>
+    <h1>vits-yunzai-plugin Web 试听页</h1>
+    <p class="muted">当前页面会调用内置 API：<code>POST /api/synthesize</code></p>
+
+    <div class="card">
+      <label for="speaker">角色</label>
+      <select id="speaker"></select>
+
+      <label for="text">文本</label>
+      <textarea id="text" rows="5" placeholder="请输入要合成的中文文本"></textarea>
+
+      <button id="submit">生成语音</button>
+      <p id="status" class="muted"></p>
+      <audio id="player" controls style="width: 100%; display: none;"></audio>
+    </div>
+
+    <div class="card">
+      <h2>API 示例</h2>
+      <pre><code>curl -X POST http://127.0.0.1:5091/api/synthesize \
+  -H "Content-Type: application/json" \
+  -d '{"speaker":"派蒙","text":"你好，旅行者。"}'</code></pre>
+    </div>
+
+    <script>
+      const speakerSelect = document.getElementById('speaker')
+      const textInput = document.getElementById('text')
+      const submitButton = document.getElementById('submit')
+      const status = document.getElementById('status')
+      const player = document.getElementById('player')
+
+      async function loadSpeakers() {
+        const res = await fetch('/api/speakers')
+        const json = await res.json()
+        json.data.forEach(item => {
+          const option = document.createElement('option')
+          option.value = item.name
+          option.textContent = `[${item.group}] ${item.name}`
+          speakerSelect.appendChild(option)
+        })
+      }
+
+      submitButton.addEventListener('click', async () => {
+        status.textContent = '正在生成，请稍候...'
+        player.style.display = 'none'
+        const res = await fetch('/api/synthesize', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ speaker: speakerSelect.value, text: textInput.value })
+        })
+        const json = await res.json()
+        if (!json.ok) {
+          status.textContent = `生成失败：${json.error}`
+          return
+        }
+        status.textContent = '生成成功'
+        player.src = json.data.audioUrl
+        player.style.display = 'block'
+        player.play()
+      })
+
+      loadSpeakers()
+    </script>
+  </body>
+</html>

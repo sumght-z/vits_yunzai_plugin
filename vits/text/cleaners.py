@@ -14,7 +14,6 @@ hyperparameter. Some cleaners are English-specific. You'll typically want to use
 
 import re
 from unidecode import unidecode
-from phonemizer import phonemize
 from pypinyin import pinyin, lazy_pinyin, load_phrases_dict, Style, load_single_dict
 from pypinyin.style._utils import get_finals, get_initials
 from pypinyin_dict.phrase_pinyin_data import cc_cedict
@@ -128,6 +127,8 @@ def transliteration_cleaners(text):
 
 def english_cleaners(text):
   '''Pipeline for English text, including abbreviation expansion.'''
+  from phonemizer import phonemize
+
   text = convert_to_ascii(text)
   text = lowercase(text)
   text = expand_abbreviations(text)
@@ -138,6 +139,8 @@ def english_cleaners(text):
 
 def english_cleaners2(text):
   '''Pipeline for English text, including abbreviation expansion. + punctuation + stress'''
+  from phonemizer import phonemize
+
   text = convert_to_ascii(text)
   text = lowercase(text)
   text = expand_abbreviations(text)

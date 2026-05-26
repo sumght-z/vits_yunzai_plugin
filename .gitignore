@@ -1,4 +1,4 @@
-# Build and Release Folders
+﻿# Build and Release Folders
 bin-debug/
 bin-release/
 [Oo]bj/
@@ -16,3 +16,21 @@ bin-release/
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
+
+# Local runtime / environment artifacts
+.venv/
+.python-runtime/
+.tmp-python-probe/
+__pycache__/
+*.py[cod]
+config/config.json
+vits/models/**/*.pth
+vits/models/**/*.pt
+vits/models/**/*.onnx
+data/audio/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+
+python/environment.yml
